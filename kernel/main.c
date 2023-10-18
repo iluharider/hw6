@@ -3,6 +3,7 @@
 #include "memlayout.h"
 #include "riscv.h"
 #include "defs.h"
+#include "dmesg.h"
 
 volatile static int started = 0;
 
@@ -30,7 +31,9 @@ main()
     virtio_disk_init(); // emulated hard disk
     userinit();      // first user process
     __sync_synchronize();
+    dmesg_init(); 
     started = 1;
+    pr_msg("kernel start %d, [%x], %p, %s", -1, 10, 0xa55, 0);
   } else {
     while(started == 0)
       ;

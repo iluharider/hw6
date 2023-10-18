@@ -22,6 +22,8 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int dmesg(const char*, int);
+int dmesg_log_toggle(int, int);
 
 // ulib.c
 int stat(const char*, struct stat*);
